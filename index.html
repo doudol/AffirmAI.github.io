@@ -1,616 +1,238 @@
 <!DOCTYPE html>
-<!-- saved from url=(0044)file:///C:/Users/tonya/Downloads/source.html -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-            <style>:root {
-    /* Accessible, comforting color palette */
-    --primary-color: #6d5dfc;        /* Soft purple - accessible and calming */
-    --primary-light: #e4e0ff;        /* Very light purple */
-    --primary-dark: #4d3df7;         /* Deeper purple for contrast */
-    --secondary-color: #63b3ed;      /* Soft blue - soothing */
-    --accent-color: #68d391;         /* Soft green - calming */
-    --warning-color: #f6ad55;        /* Soft orange - visible without being harsh */
-    
-    /* Neutral shades */
-    --neutral-50: #f9fafb;
-    --neutral-100: #f3f4f6;
-    --neutral-200: #e5e7eb;
-    --neutral-300: #d1d5db;
-    --neutral-400: #9ca3af;
-    --neutral-500: #6b7280;
-    --neutral-600: #4b5563;
-    --neutral-700: #374151;
-    --neutral-800: #1f2937;
-    --neutral-900: #111827;
-    
-    /* Text colors */
-    --text-primary: #374151;         /* Dark gray for main text - gentle on eyes */
-    --text-secondary: #6b7280;       /* Medium gray for secondary text */
-    --text-light: #f9fafb;           /* Light color for dark backgrounds */
-    
-    /* Background colors */
-    --bg-primary: #ffffff;           /* White background */
-    --bg-secondary: #f9fafb;         /* Very light gray background */
-    --bg-accent: #eff6ff;            /* Very light blue background */
-    
-    /* UI Elements */
-    --border-radius-sm: 4px;
-    --border-radius-md: 8px;
-    --border-radius-lg: 12px;
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    
-    /* Spacing */
-    --space-1: 0.25rem;
-    --space-2: 0.5rem;
-    --space-3: 0.75rem;
-    --space-4: 1rem;
-    --space-6: 1.5rem;
-    --space-8: 2rem;
-    --space-12: 3rem;
-    --space-16: 4rem;
-    
-    /* Typography */
-    --font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --line-height: 1.5;
-    --line-height-tight: 1.25;
-}
-
-/* Dark mode variables */
-.dark-mode {
-    --primary-color: #8b80ff;        /* Lighter purple for dark mode */
-    --primary-light: #35317d;        /* Darker purple that's still visible */
-    --primary-dark: #9d94ff;         /* Lighter purple for contrast */
-    --secondary-color: #4299e1;      /* Slightly darker blue */
-    --accent-color: #48bb78;         /* Slightly darker green */
-    
-    --text-primary: #e5e7eb;         /* Light gray for main text */
-    --text-secondary: #9ca3af;       /* Medium gray for secondary text */
-    --text-light: #f9fafb;           /* White for highlights */
-    
-    --bg-primary: #1f2937;           /* Dark blue-gray background */
-    --bg-secondary: #111827;         /* Darker blue-gray background */
-    --bg-accent: #374151;            /* Medium blue-gray background */
-    
-    /* Adjust shadows for dark mode */
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
-}
-
-/* Base styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    font-size: 16px;
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: var(--font-family);
-    line-height: var(--line-height);
-    color: var(--text-primary);
-    background-color: var(--bg-secondary);
-    transition: var(--transition-smooth);
-    overflow-x: hidden;
-    padding: 0;
-}
-
-/* Typography */
-h1, h2, h3, h4, h5, h6 {
-    line-height: var(--line-height-tight);
-    color: var(--text-primary);
-    margin-bottom: var(--space-4);
-    font-weight: 600;
-}
-
-h1 {
-    font-size: 2.25rem;
-}
-
-h2 {
-    font-size: 1.75rem;
-}
-
-h3 {
-    font-size: 1.25rem;
-}
-
-p {
-    margin-bottom: var(--space-4);
-}
-
-a {
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: var(--transition-smooth);
-}
-
-a:hover, a:focus {
-    color: var(--primary-dark);
-    text-decoration: underline;
-}
-
-/* Focus styles for accessibility */
-:focus {
-    outline: 3px solid var(--primary-light);
-    outline-offset: 2px;
-}
-
-/* Container */
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    background-color: var(--bg-primary);
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow-md);
-    overflow: hidden;
-}
-
-/* Header */
-header {
-    padding: var(--space-8) var(--space-6);
-    text-align: center;
-    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
-    color: var(--text-light);
-    position: relative;
-    overflow: hidden;
-}
-
-.logo-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: var(--space-2);
-}
-
-.logo-icon {
-    font-size: 2rem;
-    margin-right: var(--space-2);
-}
-
-.tagline {
-    font-size: 1.1rem;
-    opacity: 0.9;
-    font-weight: 300;
-}
-
-/* Main content */
-main {
-    padding: var(--space-8) var(--space-6);
-}
-
-.intro-section {
-    text-align: center;
-    margin-bottom: var(--space-8);
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.form-container {
-    background-color: var(--bg-accent);
-    padding: var(--space-8);
-    border-radius: var(--border-radius-lg);
-    margin-bottom: var(--space-8);
-    box-shadow: var(--shadow-sm);
-}
-
-.form-container h2 {
-    text-align: center;
-    margin-bottom: var(--space-6);
-}
-
-.form-group {
-    margin-bottom: var(--space-6);
-}
-
-.form-help {
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-    margin-top: var(--space-1);
-}
-
-/* Form elements */
-label {
-    display: block;
-    margin-bottom: var(--space-2);
-    font-weight: 500;
-    color: var(--text-primary);
-}
-
-input, select {
-    width: 100%;
-    padding: var(--space-3) var(--space-4);
-    border: 2px solid var(--neutral-300);
-    border-radius: var(--border-radius-md);
-    font-size: 1rem;
-    font-family: var(--font-family);
-    color: var(--text-primary);
-    background-color: var(--bg-primary);
-    transition: var(--transition-smooth);
-}
-
-.dark-mode input, .dark-mode select {
-    background-color: var(--neutral-800);
-    border-color: var(--neutral-600);
-    color: var(--text-light);
-}
-
-input:focus, select:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px var(--primary-light);
-}
-
-optgroup {
-    font-weight: 600;
-}
-
-/* Buttons */
-.btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-    color: var(--text-light);
-    border: none;
-    padding: var(--space-4) var(--space-8);
-    border-radius: var(--border-radius-md);
-    cursor: pointer;
-    font-size: 1.125rem;
-    font-weight: 600;
-    transition: var(--transition-smooth);
-    box-shadow: var(--shadow-sm);
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-}
-
-.btn:hover, .btn:focus {
-    box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
-}
-
-.btn:active {
-    transform: translateY(0);
-}
-
-.btn-text {
-    margin-right: var(--space-2);
-}
-
-.btn-icon {
-    font-size: 1.25rem;
-}
-
-.btn-action {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--bg-secondary);
-    color: var(--text-primary);
-    border: 1px solid var(--neutral-300);
-    padding: var(--space-2) var(--space-4);
-    border-radius: var(--border-radius-md);
-    cursor: pointer;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: var(--transition-smooth);
-    margin-right: var(--space-2);
-}
-
-.dark-mode .btn-action {
-    background-color: var(--neutral-800);
-    border-color: var(--neutral-600);
-    color: var(--text-light);
-}
-
-.btn-action:hover, .btn-action:focus {
-    background-color: var(--neutral-200);
-    border-color: var(--neutral-400);
-}
-
-.dark-mode .btn-action:hover, .dark-mode .btn-action:focus {
-    background-color: var(--neutral-700);
-}
-
-.btn-action .btn-icon {
-    margin-right: var(--space-2);
-    font-size: 1rem;
-}
-
-/* Affirmation display */
-.affirmation-container {
-    display: flex;
-    justify-content: center;
-    min-height: 200px;
-    margin-bottom: var(--space-8);
-}
-
-.affirmation-box {
-    background-color: var(--bg-primary);
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow-md);
-    padding: var(--space-8);
-    text-align: center;
-    width: 100%;
-    transition: var(--transition-smooth);
-    border: 2px solid var(--primary-light);
-}
-/* Affirmation Quote */
-.affirmation-quote {
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: var(--primary-color);
-    margin: var(--space-6) 0;
-    padding: var(--space-4);
-    border-left: 4px solid var(--accent-color);
-    background-color: var(--bg-accent);
-    border-radius: var(--border-radius-md);
-}
-
-/* Affirmation Actions */
-.affirmation-actions {
-    display: flex;
-    justify-content: center;
-    gap: var(--space-4);
-    margin-top: var(--space-6);
-}
-
-/* Daily Tip */
-.daily-tip {
-    margin-top: var(--space-8);
-    padding: var(--space-4);
-    background-color: var(--bg-secondary);
-    border-radius: var(--border-radius-md);
-    text-align: center;
-}
-
-.daily-tip h3 {
-    font-size: 1.1rem;
-    margin-bottom: var(--space-2);
-}
-
-.daily-tip p {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-}
-
-/* Info Section */
-.info-section {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--space-6);
-    margin-bottom: var(--space-8);
-}
-
-.info-card {
-    background-color: var(--bg-primary);
-    border: 1px solid var(--neutral-200);
-    border-radius: var(--border-radius-md);
-    padding: var(--space-6);
-    box-shadow: var(--shadow-sm);
-    transition: var(--transition-smooth);
-}
-
-.info-card:hover {
-    box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
-}
-
-.info-card h3 {
-    font-size: 1.25rem;
-    margin-bottom: var(--space-4);
-}
-
-.info-card p {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-}
-
-/* Footer */
-footer {
-    background-color: var(--neutral-800);
-    color: var(--text-light);
-    padding: var(--space-8) var(--space-6);
-}
-
-.footer-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-bottom: var(--space-6);
-}
-
-.footer-section {
-    flex: 1;
-    min-width: 200px;
-    margin-bottom: var(--space-4);
-}
-
-.footer-section h3 {
-    font-size: 1.1rem;
-    margin-bottom: var(--space-3);
-}
-
-.footer-section ul {
-    list-style: none;
-}
-
-.footer-link {
-    color: var(--text-light);
-    opacity: 0.8;
-    transition: opacity 0.2s;
-}
-
-.footer-link:hover {
-    opacity: 1;
-}
-
-.social-links {
-    display: flex;
-    gap: var(--space-4);
-}
-
-.social-link {
-    color: var(--text-light);
-    font-size: 1.25rem;
-}
-
-.footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: var(--space-4);
-    border-top: 1px solid var(--neutral-700);
-}
-
-.footer-bottom p {
-    font-size: 0.875rem;
-    opacity: 0.8;
-}
-
-.accessibility-btn {
-    background: none;
-    border: none;
-    color: var(--text-light);
-    cursor: pointer;
-    font-size: 0.875rem;
-    text-decoration: underline;
-}
-
-/* Accessibility Panel */
-.accessibility-panel {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: var(--bg-primary);
-    box-shadow: var(--shadow-lg);
-    padding: var(--space-6);
-    border-top-left-radius: var(--border-radius-lg);
-    border-top-right-radius: var(--border-radius-lg);
-    z-index: 1000;
-    transition: transform 0.3s ease;
-}
-
-.accessibility-panel.hidden {
-    transform: translateY(100%);
-}
-
-.accessibility-panel h3 {
-    font-size: 1.25rem;
-    margin-bottom: var(--space-4);
-}
-
-.accessibility-option {
-    margin-bottom: var(--space-4);
-}
-
-.option-controls {
-    display: flex;
-    gap: var(--space-2);
-}
-
-.control-btn {
-    padding: var(--space-2) var(--space-4);
-    border: 1px solid var(--neutral-300);
-    border-radius: var(--border-radius-sm);
-    background-color: var(--bg-secondary);
-    cursor: pointer;
-    transition: var(--transition-smooth);
-}
-
-.control-btn:hover {
-    background-color: var(--neutral-200);
-}
-
-.close-btn {
-    position: absolute;
-    top: var(--space-4);
-    right: var(--space-4);
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-/* Loader */
-.loader {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 200px;
-}
-
-.loader-spinner {
-    border: 4px solid var(--neutral-200);
-    border-top: 4px solid var(--primary-color);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 1s linear infinite;
-}
-
-.loader-text {
-    margin-top: var(--space-4);
-    font-size: 1rem;
-    color: var(--text-secondary);
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* Utility Classes */
-.hidden {
-    display: none;
-}
-
-/* Reduced Motion */
-body.reduced-motion * {
-    transition: none !important;
-    animation: none !important;
-}
-
-/* Affirmation Subtitle */
-.affirmation-subtitle {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    margin-bottom: var(--space-4);
-}
-
-/* Update Affirmation Box Border for Consistency */
-.affirmation-box {
-    border: 2px solid var(--primary-color); /* Overrides the initial --primary-light */
-}</style>
-        </head>
-        <body>
-            
-
-
-    
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="AffirmAI - Personalized daily affirmations generated just for you">
     <title>AffirmAI - Personalized Daily Affirmations</title>
-    <link rel="stylesheet" href="file:///C:/Users/tonya/Downloads/%7B%7B%20url_for(&#39;static&#39;,%20filename=&#39;style.css&#39;)%20%7D%7D">
-    <link href="./index_files/css2" rel="stylesheet">
-    <!-- Favicon -->
-    <link rel="icon" href="file:///C:/Users/tonya/Downloads/%7B%7B%20url_for(&#39;static&#39;,%20filename=&#39;favicon.ico&#39;)%20%7D%7D" type="image/x-icon">
-
-
+    <style>
+        :root {
+            --primary-color: #6d5dfc;
+            --primary-light: #e4e0ff;
+            --primary-dark: #4d3df7;
+            --secondary-color: #63b3ed;
+            --accent-color: #68d391;
+            --warning-color: #f6ad55;
+            --neutral-50: #f9fafb;
+            --neutral-100: #f3f4f6;
+            --neutral-200: #e5e7eb;
+            --neutral-300: #d1d5db;
+            --neutral-400: #9ca3af;
+            --neutral-500: #6b7280;
+            --neutral-600: #4b5563;
+            --neutral-700: #374151;
+            --neutral-800: #1f2937;
+            --neutral-900: #111827;
+            --text-primary: #374151;
+            --text-secondary: #6b7280;
+            --text-light: #f9fafb;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb;
+            --bg-accent: #eff6ff;
+            --border-radius-sm: 4px;
+            --border-radius-md: 8px;
+            --border-radius-lg: 12px;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --line-height: 1.5;
+            --line-height-tight: 1.25;
+        }
+        .dark-mode {
+            --primary-color: #8b80ff;
+            --primary-light: #35317d;
+            --primary-dark: #9d94ff;
+            --secondary-color: #4299e1;
+            --accent-color: #48bb78;
+            --text-primary: #e5e7eb;
+            --text-secondary: #9ca3af;
+            --text-light: #f9fafb;
+            --bg-primary: #1f2937;
+            --bg-secondary: #111827;
+            --bg-accent: #374151;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { font-size: 16px; scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-family);
+            line-height: var(--line-height);
+            color: var(--text-primary);
+            background-color: var(--bg-secondary);
+            transition: var(--transition-smooth);
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            line-height: var(--line-height-tight);
+            color: var(--text-primary);
+            margin-bottom: var(--space-4);
+            font-weight: 600;
+        }
+        h1 { font-size: 2.25rem; }
+        h2 { font-size: 1.75rem; }
+        h3 { font-size: 1.25rem; }
+        p { margin-bottom: var(--space-4); }
+        a { color: var(--primary-color); text-decoration: none; transition: var(--transition-smooth); }
+        a:hover, a:focus { color: var(--primary-dark); text-decoration: underline; }
+        :focus { outline: 3px solid var(--primary-light); outline-offset: 2px; }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: var(--bg-primary);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+        }
+        header {
+            padding: var(--space-8) var(--space-6);
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
+            color: var(--text-light);
+        }
+        .logo-container { display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-2); }
+        .logo-icon { font-size: 2rem; margin-right: var(--space-2); }
+        .tagline { font-size: 1.1rem; opacity: 0.9; font-weight: 300; }
+        main { padding: var(--space-8) var(--space-6); }
+        .intro-section { text-align: center; margin-bottom: var(--space-8); max-width: 700px; margin-left: auto; margin-right: auto; }
+        .form-container {
+            background-color: var(--bg-accent);
+            padding: var(--space-8);
+            border-radius: var(--border-radius-lg);
+            margin-bottom: var(--space-8);
+            box-shadow: var(--shadow-sm);
+        }
+        .form-container h2 { text-align: center; margin-bottom: var(--space-6); }
+        .form-group { margin-bottom: var(--space-6); }
+        .form-help { font-size: 0.875rem; color: var(--text-secondary); margin-top: var(--space-1); }
+        label { display: block; margin-bottom: var(--space-2); font-weight: 500; color: var(--text-primary); }
+        input, select {
+            width: 100%;
+            padding: var(--space-3) var(--space-4);
+            border: 2px solid var(--neutral-300);
+            border-radius: var(--border-radius-md);
+            font-size: 1rem;
+            font-family: var(--font-family);
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            transition: var(--transition-smooth);
+        }
+        .dark-mode input, .dark-mode select { background-color: var(--neutral-800); border-color: var(--neutral-600); color: var(--text-light); }
+        input:focus, select:focus { border-color: var(--primary-color); box-shadow: 0 0 0 3px var(--primary-light); }
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: var(--text-light);
+            border: none;
+            padding: var(--space-4) var(--space-8);
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            font-size: 1.125rem;
+            font-weight: 600;
+            transition: var(--transition-smooth);
+            box-shadow: var(--shadow-sm);
+            width: 100%;
+        }
+        .btn:hover, .btn:focus { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+        .btn:active { transform: translateY(0); }
+        .btn-text { margin-right: var(--space-2); }
+        .btn-icon { font-size: 1.25rem; }
+        .btn-action {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--neutral-300);
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+            margin-right: var(--space-2);
+        }
+        .dark-mode .btn-action { background-color: var(--neutral-800); border-color: var(--neutral-600); color: var(--text-light); }
+        .btn-action:hover, .btn-action:focus { background-color: var(--neutral-200); border-color: var(--neutral-400); }
+        .dark-mode .btn-action:hover, .dark-mode .btn-action:focus { background-color: var(--neutral-700); }
+        .btn-action .btn-icon { margin-right: var(--space-2); font-size: 1rem; }
+        .affirmation-container { display: flex; justify-content: center; min-height: 200px; margin-bottom: var(--space-8); }
+        .affirmation-box {
+            background-color: var(--bg-primary);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: var(--space-8);
+            text-align: center;
+            width: 100%;
+            transition: var(--transition-smooth);
+            border: 2px solid var(--primary-color);
+        }
+        .affirmation-quote {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--primary-color);
+            margin: var(--space-6) 0;
+            padding: var(--space-4);
+            border-left: 4px solid var(--accent-color);
+            background-color: var(--bg-accent);
+            border-radius: var(--border-radius-md);
+        }
+        .affirmation-actions { display: flex; justify-content: center; gap: var(--space-4); margin-top: var(--space-6); }
+        .daily-tip { margin-top: var(--space-8); padding: var(--space-4); background-color: var(--bg-secondary); border-radius: var(--border-radius-md); text-align: center; }
+        .daily-tip h3 { font-size: 1.1rem; margin-bottom: var(--space-2); }
+        .daily-tip p { font-size: 0.9rem; color: var(--text-secondary); }
+        .info-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-6); margin-bottom: var(--space-8); }
+        .info-card { background-color: var(--bg-primary); border: 1px solid var(--neutral-200); border-radius: var(--border-radius-md); padding: var(--space-6); box-shadow: var(--shadow-sm); transition: var(--transition-smooth); }
+        .info-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+        .info-card h3 { font-size: 1.25rem; margin-bottom: var(--space-4); }
+        .info-card p { font-size: 0.95rem; color: var(--text-secondary); }
+        footer { background-color: var(--neutral-800); color: var(--text-light); padding: var(--space-8) var(--space-6); }
+        .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; margin-bottom: var(--space-6); }
+        .footer-section { flex: 1; min-width: 200px; margin-bottom: var(--space-4); }
+        .footer-section h3 { font-size: 1.1rem; margin-bottom: var(--space-3); }
+        .footer-section ul { list-style: none; }
+        .footer-link { color: var(--text-light); opacity: 0.8; transition: opacity 0.2s; }
+        .footer-link:hover { opacity: 1; }
+        .social-links { display: flex; gap: var(--space-4); }
+        .social-link { color: var(--text-light); font-size: 1.25rem; }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-4); border-top: 1px solid var(--neutral-700); }
+        .footer-bottom p { font-size: 0.875rem; opacity: 0.8; }
+        .accessibility-btn { background: none; border: none; color: var(--text-light); cursor: pointer; font-size: 0.875rem; text-decoration: underline; }
+        .accessibility-panel { position: fixed; bottom: 0; left: 0; right: 0; background-color: var(--bg-primary); box-shadow: var(--shadow-lg); padding: var(--space-6); border-top-left-radius: var(--border-radius-lg); border-top-right-radius: var(--border-radius-lg); z-index: 1000; transition: transform 0.3s ease; }
+        .accessibility-panel.hidden { transform: translateY(100%); }
+        .accessibility-panel h3 { font-size: 1.25rem; margin-bottom: var(--space-4); }
+        .accessibility-option { margin-bottom: var(--space-4); }
+        .option-controls { display: flex; gap: var(--space-2); }
+        .control-btn { padding: var(--space-2) var(--space-4); border: 1px solid var(--neutral-300); border-radius: var(--border-radius-sm); background-color: var(--bg-secondary); cursor: pointer; transition: var(--transition-smooth); }
+        .control-btn:hover { background-color: var(--neutral-200); }
+        .close-btn { position: absolute; top: var(--space-4); right: var(--space-4); background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+        .loader { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 200px; }
+        .loader-spinner { border: 4px solid var(--neutral-200); border-top: 4px solid var(--primary-color); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; }
+        .loader-text { margin-top: var(--space-4); font-size: 1rem; color: var(--text-secondary); }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .hidden { display: none; }
+        body.reduced-motion * { transition: none !important; animation: none !important; }
+        .affirmation-subtitle { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: var(--space-4); }
+    </style>
+</head>
+<body>
     <div class="container" role="main">
         <header>
             <div class="logo-container">
-                <span class="logo-icon"><img src="./index_files/logo.jpeg" alt="Logo" width="80" height="80"></span>
-
+                <span class="logo-icon">✨</span>
                 <h1>AffirmAI</h1>
             </div>
             <p class="tagline">Personalized affirmations to brighten your day</p>
@@ -619,7 +241,7 @@ body.reduced-motion * {
         <main>
             <section class="intro-section">
                 <h2>Your Daily Moment of Positivity</h2>
-                <p>AffirmAI creates personalized affirmations designed specifically for you and your current needs. Simply enter your name, choose your focus area, and receive a unique affirmation to support your well-being.</p>
+                <p>AffirmAI creates personalized affirmations designed specifically for you. Enter your name, choose your focus, and get a unique affirmation.</p>
             </section>
             
             <section class="form-container">
@@ -627,61 +249,58 @@ body.reduced-motion * {
                 <form id="affirmation-form" aria-labelledby="form-heading">
                     <div class="form-group">
                         <label for="name">Your Name or Nickname</label>
-                        <input type="text" id="name" name="name" placeholder="How would you like to be addressed?" aria-required="true" autocomplete="given-name" maxlength="50" required="">
+                        <input type="text" id="name" name="name" placeholder="How would you like to be addressed?" aria-required="true" required>
                         <p class="form-help">This helps personalize your affirmation</p>
                     </div>
-                    
                     <div class="form-group">
                         <label for="focus-area">Area of Focus</label>
-                        <select id="focus-area" name="focus_area" aria-required="true" required="">
-                            <option value="" disabled="" selected="">What area of your life needs support today?</option>
+                        <select id="focus-area" name="focus_area" aria-required="true" required>
+                            <option value="" disabled selected>What area needs support today?</option>
                             <optgroup label="Personal Development">
-                                <option value="self-love">Self-Love &amp; Acceptance</option>
-                                <option value="confidence">Confidence &amp; Self-Esteem</option>
-                                <option value="mindfulness">Mindfulness &amp; Presence</option>
-                                <option value="gratitude">Gratitude &amp; Appreciation</option>
-                                <option value="personal growth">Personal Growth &amp; Learning</option>
+                                <option value="self-love">Self-Love & Acceptance</option>
+                                <option value="confidence">Confidence & Self-Esteem</option>
+                                <option value="mindfulness">Mindfulness & Presence</option>
+                                <option value="gratitude">Gratitude & Appreciation</option>
+                                <option value="personal growth">Personal Growth & Learning</option>
                             </optgroup>
                             <optgroup label="Well-being">
                                 <option value="anxiety relief">Anxiety Relief</option>
                                 <option value="stress management">Stress Management</option>
                                 <option value="sleep">Restful Sleep</option>
-                                <option value="energy">Energy &amp; Vitality</option>
+                                <option value="energy">Energy & Vitality</option>
                                 <option value="physical health">Physical Health</option>
                                 <option value="mental health">Mental Health</option>
                             </optgroup>
                             <optgroup label="Life Areas">
-                                <option value="career">Career &amp; Work Life</option>
-                                <option value="creativity">Creativity &amp; Expression</option>
-                                <option value="relationships">Relationships &amp; Connection</option>
+                                <option value="career">Career & Work Life</option>
+                                <option value="creativity">Creativity & Expression</option>
+                                <option value="relationships">Relationships & Connection</option>
                                 <option value="family">Family Harmony</option>
                                 <option value="finances">Financial Well-being</option>
                                 <option value="social life">Social Confidence</option>
                             </optgroup>
                             <optgroup label="Specific Challenges">
                                 <option value="change">Embracing Change</option>
-                                <option value="perseverance">Perseverance &amp; Resilience</option>
-                                <option value="healing">Healing &amp; Recovery</option>
+                                <option value="perseverance">Perseverance & Resilience</option>
+                                <option value="healing">Healing & Recovery</option>
                                 <option value="boundaries">Setting Boundaries</option>
-                                <option value="focus">Focus &amp; Concentration</option>
+                                <option value="focus">Focus & Concentration</option>
                             </optgroup>
                         </select>
                         <p class="form-help">Select what matters most to you right now</p>
                     </div>
-                    
                     <div class="form-group">
                         <label for="tone-preference">Tone Preference</label>
                         <select id="tone-preference" name="tone_preference">
-                            <option value="gentle">Gentle &amp; Soothing</option>
-                            <option value="encouraging" selected="">Encouraging &amp; Uplifting</option>
-                            <option value="empowering">Strong &amp; Empowering</option>
-                            <option value="grounding">Grounding &amp; Centering</option>
-                            <option value="playful">Playful &amp; Light</option>
-                            <option value="compassionate">Compassionate &amp; Nurturing</option>
+                            <option value="gentle">Gentle & Soothing</option>
+                            <option value="encouraging" selected>Encouraging & Uplifting</option>
+                            <option value="empowering">Strong & Empowering</option>
+                            <option value="grounding">Grounding & Centering</option>
+                            <option value="playful">Playful & Light</option>
+                            <option value="compassionate">Compassionate & Nurturing</option>
                         </select>
                         <p class="form-help">How would you like your affirmation to feel?</p>
                     </div>
-                    
                     <button type="submit" class="btn" aria-label="Generate affirmation">
                         <span class="btn-text">Create My Affirmation</span>
                         <span class="btn-icon">✨</span>
@@ -695,17 +314,15 @@ body.reduced-motion * {
                         <h2>Your Personalized Affirmation</h2>
                         <p class="affirmation-subtitle">Take a moment to absorb these words meant just for you</p>
                     </div>
-                    
                     <blockquote class="affirmation-quote">
                         <p id="affirmation-text"></p>
                     </blockquote>
-                    
                     <div class="affirmation-actions">
-                        <button id="copy-btn" class="btn-action" aria-label="Copy affirmation to clipboard">
+                        <button id="copy-btn" class="btn-action" aria-label="Copy affirmation">
                             <span class="btn-icon">📋</span>
                             <span class="btn-text">Copy</span>
                         </button>
-                        <button id="save-btn" class="btn-action" aria-label="Save affirmation to favorites">
+                        <button id="save-btn" class="btn-action" aria-label="Save affirmation">
                             <span class="btn-icon">❤️</span>
                             <span class="btn-text">Save</span>
                         </button>
@@ -714,33 +331,29 @@ body.reduced-motion * {
                             <span class="btn-text">New Affirmation</span>
                         </button>
                     </div>
-                    
                     <div class="daily-tip">
                         <h3>Daily Wellness Tip</h3>
-                        <p>Try repeating your affirmation three times when you wake up and before you go to sleep for maximum benefit.</p>
+                        <p>Repeat your affirmation three times when you wake up and before sleep.</p>
                     </div>
                 </div>
-                
                 <div class="loader hidden" id="loader" aria-label="Loading">
                     <div class="loader-spinner"></div>
-                    <p class="loader-text">Creating your personalized affirmation...</p>
+                    <p class="loader-text">Creating your affirmation...</p>
                 </div>
             </section>
             
             <section class="info-section">
                 <div class="info-card">
                     <h3>About Affirmations</h3>
-                    <p>Positive affirmations are simple statements that can help reshape thought patterns and promote well-being when practiced regularly. They work best when personalized to your specific needs.</p>
+                    <p>Positive affirmations reshape thought patterns and promote well-being when practiced regularly.</p>
                 </div>
-                
                 <div class="info-card">
                     <h3>How to Use</h3>
-                    <p>For best results, repeat your affirmation throughout the day. Try saying it to yourself in the morning, writing it down, or setting it as a reminder on your phone.</p>
+                    <p>Repeat your affirmation daily—say it, write it, or set it as a phone reminder.</p>
                 </div>
-                
                 <div class="info-card">
                     <h3>Why AI-Generated?</h3>
-                    <p>AffirmAI creates unique affirmations tailored specifically to you. This personalization makes them more meaningful and effective than generic affirmations.</p>
+                    <p>AffirmAI tailors affirmations to you, making them more meaningful than generic ones.</p>
                 </div>
             </section>
         </main>
@@ -749,36 +362,31 @@ body.reduced-motion * {
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>AffirmAI</h3>
-                    <p>Bringing positive affirmations into your daily life through the power of AI.</p>
+                    <p>Bringing positivity through AI.</p>
                 </div>
-                
                 <div class="footer-section">
                     <h3>Resources</h3>
                     <ul>
-                        <li><a href="file:///C:/Users/tonya/Downloads/source.html#" class="footer-link">About</a></li>
-                        <li><a href="file:///C:/Users/tonya/Downloads/source.html#" class="footer-link">Privacy Policy</a></li>
-                        <li><a href="file:///C:/Users/tonya/Downloads/source.html#" class="footer-link">Contact</a></li>
+                        <li><a href="#" class="footer-link">About</a></li>
+                        <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                        <li><a href="#" class="footer-link">Contact</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-section">
                     <h3>Connect</h3>
                     <div class="social-links">
                         <a href="https://github.com/doudol" class="social-link" aria-label="GitHub">GitHub</a>
-                        <blank>
-                    </blank></div>
+                    </div>
                 </div>
             </div>
-            
             <div class="footer-bottom">
-                <p>© 2025 AffirmAI | Made with care for everyone's well-being</p>
-                <button id="accessibility-toggle" class="accessibility-btn" aria-label="Toggle high contrast mode">
+                <p>© 2025 AffirmAI | Made with ❤️ by Doudol</p>
+                <button id="accessibility-toggle" class="accessibility-btn" aria-label="Toggle accessibility">
                     Accessibility Options
                 </button>
             </div>
         </footer>
         
-        <!-- Accessibility Panel -->
         <div id="accessibility-panel" class="accessibility-panel hidden">
             <h3>Accessibility Options</h3>
             <div class="accessibility-option">
@@ -800,200 +408,127 @@ body.reduced-motion * {
             <button id="close-panel" class="close-btn">Close</button>
         </div>
     </div>
-    
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Form elements
             const form = document.getElementById('affirmation-form');
             const affirmationBox = document.getElementById('affirmation-box');
             const affirmationText = document.getElementById('affirmation-text');
             const loader = document.getElementById('loader');
-            
-            // Buttons
             const copyBtn = document.getElementById('copy-btn');
             const saveBtn = document.getElementById('save-btn');
             const newBtn = document.getElementById('new-btn');
             const accessibilityToggle = document.getElementById('accessibility-toggle');
             const accessibilityPanel = document.getElementById('accessibility-panel');
             const closePanel = document.getElementById('close-panel');
-            
-            // Text size controls
             const fontIncrease = document.getElementById('font-increase');
             const fontDecrease = document.getElementById('font-decrease');
             const fontReset = document.getElementById('font-reset');
-            
-            // Display mode controls
             const lightMode = document.getElementById('light-mode');
             const darkMode = document.getElementById('dark-mode');
             const reducedMotion = document.getElementById('reduced-motion');
-            
-            // Saved affirmations
+
             let savedAffirmations = JSON.parse(localStorage.getItem('savedAffirmations') || '[]');
-            
-            // Form submission
+            let currentFontSize = 100;
+
+            // Placeholder for backend URL (to be set after Step 3)
+            const BACKEND_URL = 'https://affirmai-backend.vercel.app/generate-affirmation';
+
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
-                
-                // Get form values
                 const name = document.getElementById('name').value;
                 const focusArea = document.getElementById('focus-area').value;
                 const tonePreference = document.getElementById('tone-preference').value;
-                
-                // Show loader
+
                 affirmationBox.classList.add('hidden');
                 loader.classList.remove('hidden');
-                
+
                 try {
-                    // Send request to backend
-                    const response = await fetch('/generate-affirmation', {
+                    const response = await fetch(BACKEND_URL, {
                         method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ 
-                            name, 
-                            focus_area: focusArea,
-                            tone_preference: tonePreference
-                        }),
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ name, focus_area: focusArea, tone_preference: tonePreference })
                     });
-                    
-                    const data = await response.json();
-                    
+                    const data = await response.text();
                     if (response.ok) {
-                        // Display the affirmation
-                        affirmationText.textContent = data.affirmation;
+                        affirmationText.textContent = data;
                         affirmationBox.classList.remove('hidden');
                     } else {
-                        // Display error
-                        affirmationText.textContent = `Error: ${data.error || 'Something went wrong'}`;
+                        affirmationText.textContent = `Error: ${data}`;
                         affirmationBox.classList.remove('hidden');
                     }
                 } catch (error) {
                     affirmationText.textContent = 'Error connecting to server. Please try again.';
                     affirmationBox.classList.remove('hidden');
                 }
-                
-                // Hide loader
                 loader.classList.add('hidden');
-                
-                // Scroll to result
                 affirmationBox.scrollIntoView({ behavior: 'smooth' });
             });
-            
-            // Copy button functionality
+
             copyBtn.addEventListener('click', () => {
-                navigator.clipboard.writeText(affirmationText.textContent)
-                    .then(() => {
-                        const originalText = copyBtn.querySelector('.btn-text').textContent;
-                        copyBtn.querySelector('.btn-text').textContent = 'Copied!';
-                        setTimeout(() => {
-                            copyBtn.querySelector('.btn-text').textContent = originalText;
-                        }, 2000);
-                    });
+                navigator.clipboard.writeText(affirmationText.textContent).then(() => {
+                    copyBtn.querySelector('.btn-text').textContent = 'Copied!';
+                    setTimeout(() => copyBtn.querySelector('.btn-text').textContent = 'Copy', 2000);
+                });
             });
-            
-            // Save button functionality
+
             saveBtn.addEventListener('click', () => {
                 const affirmation = affirmationText.textContent;
                 const focusArea = document.getElementById('focus-area').value;
-                const focusAreaText = document.getElementById('focus-area').options[document.getElementById('focus-area').selectedIndex].text;
-                
+                const focusText = document.getElementById('focus-area').options[document.getElementById('focus-area').selectedIndex].text;
                 if (!savedAffirmations.some(item => item.text === affirmation)) {
-                    savedAffirmations.push({
-                        text: affirmation,
-                        focus: focusArea,
-                        focusText: focusAreaText,
-                        date: new Date().toISOString()
-                    });
-                    
+                    savedAffirmations.push({ text: affirmation, focus: focusArea, focusText, date: new Date().toISOString() });
                     localStorage.setItem('savedAffirmations', JSON.stringify(savedAffirmations));
-                    
-                    const originalText = saveBtn.querySelector('.btn-text').textContent;
-                    const originalIcon = saveBtn.querySelector('.btn-icon').textContent;
-                    
                     saveBtn.querySelector('.btn-text').textContent = 'Saved!';
                     saveBtn.querySelector('.btn-icon').textContent = '✅';
-                    
-                    setTimeout(() => {
-                        saveBtn.querySelector('.btn-text').textContent = originalText;
-                        saveBtn.querySelector('.btn-icon').textContent = originalIcon;
-                    }, 2000);
-                } else {
-                    saveBtn.querySelector('.btn-text').textContent = 'Already Saved';
                     setTimeout(() => {
                         saveBtn.querySelector('.btn-text').textContent = 'Save';
+                        saveBtn.querySelector('.btn-icon').textContent = '❤️';
                     }, 2000);
                 }
             });
-            
-            // New affirmation button
-            newBtn.addEventListener('click', () => {
-                form.dispatchEvent(new Event('submit'));
-            });
-            
-            // Accessibility panel toggle
-            accessibilityToggle.addEventListener('click', () => {
-                accessibilityPanel.classList.toggle('hidden');
-            });
-            
-            closePanel.addEventListener('click', () => {
-                accessibilityPanel.classList.add('hidden');
-            });
-            
-            // Font size controls
-            let currentFontSize = 100; // percentage
-            
+
+            newBtn.addEventListener('click', () => form.dispatchEvent(new Event('submit')));
+
+            accessibilityToggle.addEventListener('click', () => accessibilityPanel.classList.toggle('hidden'));
+            closePanel.addEventListener('click', () => accessibilityPanel.classList.add('hidden'));
+
             fontIncrease.addEventListener('click', () => {
                 if (currentFontSize < 150) {
                     currentFontSize += 10;
                     document.body.style.fontSize = `${currentFontSize}%`;
                 }
             });
-            
             fontDecrease.addEventListener('click', () => {
                 if (currentFontSize > 80) {
                     currentFontSize -= 10;
                     document.body.style.fontSize = `${currentFontSize}%`;
                 }
             });
-            
             fontReset.addEventListener('click', () => {
                 currentFontSize = 100;
                 document.body.style.fontSize = '100%';
             });
-            
-            // Display mode controls
+
             lightMode.addEventListener('click', () => {
-                document.body.classList.remove('dark-mode');
-                document.body.classList.remove('reduced-motion');
+                document.body.classList.remove('dark-mode', 'reduced-motion');
                 localStorage.setItem('displayMode', 'light');
             });
-            
             darkMode.addEventListener('click', () => {
                 document.body.classList.add('dark-mode');
                 document.body.classList.remove('reduced-motion');
                 localStorage.setItem('displayMode', 'dark');
             });
-            
             reducedMotion.addEventListener('click', () => {
                 document.body.classList.toggle('reduced-motion');
-                const isReduced = document.body.classList.contains('reduced-motion');
-                localStorage.setItem('reducedMotion', isReduced.toString());
+                localStorage.setItem('reducedMotion', document.body.classList.contains('reduced-motion').toString());
             });
-            
-            // Load saved display preferences
+
             const savedDisplayMode = localStorage.getItem('displayMode');
             const savedReducedMotion = localStorage.getItem('reducedMotion') === 'true';
-            
-            if (savedDisplayMode === 'dark') {
-                document.body.classList.add('dark-mode');
-            }
-            
-            if (savedReducedMotion) {
-                document.body.classList.add('reduced-motion');
-            }
-            
-            // Close accessibility panel when clicking outside of it
+            if (savedDisplayMode === 'dark') document.body.classList.add('dark-mode');
+            if (savedReducedMotion) document.body.classList.add('reduced-motion');
+
             document.addEventListener('click', (e) => {
                 if (!accessibilityPanel.contains(e.target) && e.target !== accessibilityToggle) {
                     accessibilityPanel.classList.add('hidden');
@@ -1001,9 +536,5 @@ body.reduced-motion * {
             });
         });
     </script>
-
-
-            <script>// Write JavaScript here</script>
-        
-    
-</body></html>
+</body>
+</html>
